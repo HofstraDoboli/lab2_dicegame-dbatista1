@@ -141,14 +141,6 @@ int main()
         if (s.length() > 4) {
             cout << "That's not an integer";
         }
-        else if (val = 10)
-        {
-            cout << "Correct" << endl;
-        }
-        else if (val = 4.5)
-        {
-            cout << "not an int";
-        }
         else {
             try {
                 val = stoi(s);
@@ -158,6 +150,7 @@ int main()
                 cerr << "\tInvalid argument: " << ia.what() << '\n';
             }
             cout << "\tYou entered " << val << endl << endl;
+            
         }
         // add your code - it should ask you to type the value you see at line 134. 
         // it should display "Correct 10 " when you enter 10; 
