@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream> 
+#include <climits>
 using namespace std;
 
 int main()
@@ -48,11 +49,11 @@ int main()
   
 
     output_file << "\nQ1: (cin only) What happens when you run the code above? Explain why" << endl;
-    string answer = ""; // enter your answer in between ""
+    string answer = "After entering 10 the flag is still false, when I enter 4.5 flag is still false and it extracts the value 4, \nand it continues to loop without accepting any other values"; // enter your answer in between ""
     output_file << "Answer Q1: " << answer << endl;
 
     cout << "\nCode for Q2 and Q3" << endl;
-    /* //uncomment when you get to Q2 and Q3
+    //uncomment when you get to Q2 and Q3
     for (int i = 0; i < array_values.size(); i++)
     {
         cout << "\tEnter the value " << array_values.at(i) << endl;
@@ -75,15 +76,15 @@ int main()
         
         cout << "\tYou entered " << val << endl << endl;
     }  
-    */
+    
 
     output_file << "\nQ2: (cin + fail+ignore) What happens when you run the code above? Explain why." << endl;
-    answer = ""; // enter your answer in between ""
-    output_file << "Answer Q2: " << answer << endl;
+    answer = "I entered 10 and i set the fail flag to false, then I entered 4.5 and it set the flag to false, but it shows that .5 was unread in the buffer \n, for abc and ait sets the fail flag to true and says that you entered no integer and it stores 0"; // enter your answer in between ""
+    output_file << "Answer Q2" << answer << endl;
 
     output_file << "\nQ3: Is the problem of reading an integer value solved? Explain your reasoning." << endl;
-    answer = ""; // enter your answer in between ""
-    output_file << "Answer Q3: " << answer << endl;
+    answer = "No, becasue for 4.5 it set the flag to false and it extracted 4 without saying it is not an integer"; // enter your answer in between ""
+    output_file << "Answer Q3" << answer << endl;
 
     cout << "\nCode for Q4" << endl;
     // uncomment when you get to Q4
@@ -97,12 +98,12 @@ int main()
                             // up to and including '\n'
         val = stoi(s);  // stoi = converts a string into an integer 
                             // read more at http://www.cplusplus.com/reference/string/stoi/?kw=stoi
-        cout << "\tYou entered " << val << endl << endl;
+        cout << "\tYou entered "<< val << endl << endl;
     }  
-*/
+    */
     output_file << "\nQ4: (getline only) What happens when you run the code above? Explain why." << endl;
-    answer = ""; // enter your answer in between ""
-    output_file << "Answer Q4: " << answer << endl;
+    answer = "I entered 10 and it displays the valu, then I entered 4.5 and it displays the value 4.\nThen I entered abc and the program terminates with an error"; // enter your answer in between ""
+    output_file << "Answer Q4 " << answer << endl;
 
     // Comment the for loop for Q4 above - leave the answer to Q4
     
@@ -124,16 +125,33 @@ int main()
         cout << "\tYou entered " << val << endl << endl;
     }
     output_file << "\nQ5: (getline+stoi) What happens when you run the code above? Explain why." << endl;
-    answer = ""; // enter your answer in between ""
+    answer = "For Q5 the code is the same as Q4, but instead of terminating the program after the error the code catches the error and prints it, and the code goes on "; // enter your answer in between ""
     output_file << "Answer Q5: " << answer << endl;
 
     //6. Q6 Add code to enter integer values from the keyboard correctly = accept only 10, not 4.5, abc or a
     cout << "\nCode for Q6" << endl;
     for (int i = 0; i < array_values.size(); i++)
     {
+     
         cout << "\tEnter the value " << array_values.at(i) << endl;
-        cout << "\tEnter an int "; 
+        cout << "\tEnter an int ";
+        string s;
 
+        getline(cin, s);
+        if (s.length() > 4) {
+            cout << "That's not an integer";
+        }
+        else {
+            try {
+                val = stoi(s);
+            }
+            catch (const std::invalid_argument& ia)
+            {
+                cerr << "\tInvalid argument: " << ia.what() << '\n';
+            }
+            cout << "\tYou entered " << val << endl << endl;
+            
+        }
         // add your code - it should ask you to type the value you see at line 134. 
         // it should display "Correct 10 " when you enter 10; 
         // it should display "Incorrect ", followed by the value you entered, for the rest of of the values 
