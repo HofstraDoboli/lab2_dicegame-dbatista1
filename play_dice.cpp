@@ -17,7 +17,6 @@ struct diceValues
     int sum;
     char play_again;
     char start_game;
-    int end_game;
     int last;
     int wins;
     int losses;
@@ -30,7 +29,6 @@ void loadData();
 void startCheck();
 void startGames();
 void contGame();
-void endGame();
 
 //structures
 using namespace std;
@@ -66,7 +64,6 @@ void loadData()
     diceValues1.sum = 0;
     diceValues1.play_again = ' ';
     diceValues1.start_game = ' ';
-    diceValues1.end_game = ' ';
     diceValues1.play_again = ' ';
     diceValues1.last = 0;
     diceValues1.wins = 0;

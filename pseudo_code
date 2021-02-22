@@ -1,1 +1,132 @@
-Add your steps (pseudo-code) for the dice game here.
+Include ctime // rand 
+
+name std // for cleaner code
+
+Define structure diceValues
+die1 //store data for first die roll
+die2 //store data for second die roll
+sum //store sumof both rolls
+play_again //store value to check if game should be played again
+start_game //check if player wants to start or end game
+last //becomes the point value after no match in first function
+wins //accumulate number of wins
+losses //accumulate number of losses
+rolls //accumulate number of rolls
+games_played //accumulate number of games playes
+
+Function prototype
+// call every function here
+loadData()
+startChecks()
+startGames()
+contGames()
+
+structures
+// Define how many dif there can be
+Set diceValues to diceValues1
+
+In the main body
+
+Srand(time(NULL)) updates seed with computer time for random values every time
+
+// Call all fuctions in order
+
+LoadData() First
+
+startChecks() Second
+
+startGames() Third
+
+contGames() Fourth
+
+Return value 0
+
+//end body
+
+Function loadData()
+	Add all needed definitions 
+	// initiate all required values
+//end of loadData()
+	
+Function 2 startChecks()
+	Output start question // S to start X to exit
+	Input start_game value;
+	IF start_game value is X
+		Output why leave game without plating
+		Exit game // ends code
+	games_played increment by one // because game started
+//end of startChecks()
+
+Function startGames()
+	WHILE start_game value is S
+	
+		Roll two dice and sum the results. // find values for first roll of game
+		Output sum and the roll of both die // let player know results of roll
+		
+		Update rolls by increment of one // for stats at the end
+
+		IF sum is equal to 7 or sum is equal to 11
+			Output player won
+			Update wins by increment of one // for stats at the end 
+			output start new game S or exit X
+			IF start_game is X
+				Output stats
+				Exit game
+			Else 
+				Update games_played by increment of one // for stats at the end 
+				Call function startGames()
+				
+		Else if sum is equal to 2 or sum is equal to 3 or sum is equal to 12
+			Output player loss
+			Update losses by increment of one // for stats at the end 
+			output start new game S or exit X
+			IF start_game is X
+				Output stats
+				Exit game
+			Else 
+				Update games_played by increment of one // for stats at the end 
+				Call function startGames()
+				
+		Else
+			Update value sum to value last //allows code to compare new sum value to last sum value, this becomes the point value
+			Output tells player that the sum is now their point value Press C to throw again
+			Input goes to play_again
+			Update rolls by increment of one // for stats at the end 
+			Update start_game to empty char value
+			Call function contGame()
+//end of the startGames()
+
+Function contGame()
+	WHILE play_again is C
+	
+	Update the die by rerolling dice and sum the results. // new value for die every reroll
+	Output sum and the roll of both die // tell player new numbers
+	
+	Update rolls by increment of one // for stats at the end
+	
+	IF sum is equal to 7
+		Output player loss
+		Update losses by increment of one // for stats at the end 
+		output start new game S or exit X
+		IF start_game is X
+			Output stats
+			Exit game
+		Else 
+			Update games_played by increment of one // for stats at the end 
+			Call function startGames()
+			
+	Else If sum value is equal to last value //check IF old sum equals new sum
+		Output player won
+		Update wins by increment of one // for stats at the end 
+		output start new game S or exit X
+		IF start_game is X
+			Output stats
+			Exit game
+		Else 
+			Update games_played by increment of one // for stats at the end 
+			Call function startGames()
+	Else 
+		Output ask player to press C to play again
+		Input value to play_again
+		Update rolls by increment of one // for state at the end
+	//end of contGame()
